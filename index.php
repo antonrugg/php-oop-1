@@ -7,6 +7,10 @@
         public $prezzo;
         public $sconto = 0;
 
+        function __construct(){
+
+        }
+
         public function setSconto($mediaVoti, $disponibile){
             if($mediaVoti < 3 && $disponibile){
                 $this->sconto = 20;
@@ -18,6 +22,8 @@
         }
     }
 
+    var_dump(Movie);
+
     $ritornoAlFuturo = new Movie();
     $ritornoAlFuturo->setSconto(4, true);
     $scontoRitornoAlFuturo = $ritornoAlFuturo.getSconto();
@@ -28,6 +34,8 @@
 
     $ritornoAlFuturo->titolo = "Ritorno al Futuro";
     $laGrandeBellezza->titolo = "La grande bellezza";
+
+  
 
     
 
