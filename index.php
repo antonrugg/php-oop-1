@@ -8,74 +8,46 @@ i valori delle relative proprietà -->
 
 <?php
 //classe
-    class Movie {
-        //attributi
-        public $titolo;
-        public $titoloOriginale;
-        public $regista;
-        public $sconto = 0;
-
-        function __construct($_mediaVoti){
-            $this->mediaVoti = $_mediaVoti;
-            $this->setSconto($_mediaVoti);
-        }
-
-        //LE FUNZIONI NON LE POSSIAMO ESEGUIRE SULLA CLASSE, LE DOBBIAMO ESEGUIRE SULL'ISTANZA!!!
-        public function setSconto($mediaVoti){
-            if($mediaVoti < 3){
-                $this->sconto = 20;
-            }
-        }
-
-        public function getSconto(){
-            return $this->sconto;
-        }
-
-        public function calculatePrice($prezzo){
-            return $prezzo - ($prezzo * $this->sconto  / 100);
-        }
-    }
-
-
-
+    include('./partials/movies.php');
     
     //istanza della classe Movie
-    $ritornoAlFuturo = new Movie(5);
-    //accedo ad un attributo dell'istanza
-    $ritornoAlFuturo->titolo = "Ritorno al Futuro";
-    $ritornoAlFuturo->titoloOriginale = "Back to the future";
-    $ritornoAlFuturo->regista = "Robert Zemeckis";
-    $ritornoAlFuturo->prezzo = 9.99;
-
-    $ritornoAlFuturo->setSconto(2);
-    // $scontoRitornoAlFuturo = $ritornoAlFuturo.getSconto();
+    $ritornoAlFuturo = new Movie("Ritorno al Futuro", "Back to the future", "Robert Zemeckis", 9.99, 5);
+    
 
     //istanza della classe Movie
-    $laGrandeBellezza = new Movie(2);
-    //accedo ad un attributo dell'istanza 
-    $laGrandeBellezza->titolo = "La grande bellezza";
-    $laGrandeBellezza->titoloOriginale = "The great beauty";
-    $laGrandeBellezza->regista = "Paolo Sorrentino";
-    $laGrandeBellezza->prezzo = 12.99;
-    $laGrandeBellezza->setSconto(2);
-    // $scontoLaGrandeBellezza = $laGrandeBellezza.getSconto();
-
-    // $ritornoAlFuturo->titolo = "Ritorno al Futuro";
-    // $laGrandeBellezza->titolo = "La grande bellezza";
-    echo('<div class="card"');
-    echo('<p>' . $ritornoAlFuturo->titolo . '</p>');
-    echo('<p>' . $ritornoAlFuturo->titoloOriginale . '</p>');
-    echo('<p>' . $ritornoAlFuturo->regista . '</p>');
-    echo('<p>' . $ritornoAlFuturo->prezzo . '</p>');
-    echo('<p>Prezzo scontato: ' . round($ritornoAlFuturo->calculatePrice($ritornoAlFuturo->prezzo), 2) . '$</p>');
-    echo('</div>');
-
-    echo('<div class="card"');
-    echo('<p>' . $laGrandeBellezza->titolo . '</p>');
-    echo('<p>' . $laGrandeBellezza->titoloOriginale . '</p>');
-    echo('<p>' . $laGrandeBellezza->regista . '</p>');
-    echo('<p>' . $laGrandeBellezza->prezzo . '</p>');
-    echo('<p>Prezzo scontato: ' . round($laGrandeBellezza->calculatePrice($laGrandeBellezza->prezzo), 2) . '$</p>');
-    echo('</div>');
+    $laGrandeBellezza = new Movie("La grande bellezza", "The great beauty", "Paolo Sorrentino", 12.99, 2);
+       
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - OOP</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="main">
+    <?php
+    echo('<div class="card"');
+        echo('<p>' . $ritornoAlFuturo->titolo . '</p>');
+        echo('<p>' . $ritornoAlFuturo->titoloOriginale . '</p>');
+        echo('<p>' . $ritornoAlFuturo->regista . '</p>');
+        echo('<p>' . $ritornoAlFuturo->prezzo . ' $</p>');
+        echo('<p>Prezzo scontato: ' . round($ritornoAlFuturo->calculatePrice($ritornoAlFuturo->prezzo), 2) . ' $</p>');
+    echo('</div>');
+
+    echo('<div class="card"');
+        echo('<p>' . $laGrandeBellezza->titolo . '</p>');
+        echo('<p>' . $laGrandeBellezza->titoloOriginale . '</p>');
+        echo('<p>' . $laGrandeBellezza->regista . '</p>');
+        echo('<p>' . $laGrandeBellezza->prezzo . ' $</p>');
+        echo('<p>Prezzo scontato: ' . round($laGrandeBellezza->calculatePrice($laGrandeBellezza->prezzo), 2) . ' $</p>');
+    echo('</div>');
+    ?>
+    </div>
+</body>
+</html>
