@@ -10,14 +10,6 @@ i valori delle relative proprietà -->
 //classe
     include('./partials/movies.php');
     
-    //istanza della classe Movie
-    $ritornoAlFuturo = new Movie("Ritorno al Futuro", "Back to the future", "Robert Zemeckis", 9.99, 5);
-    
-
-    //istanza della classe Movie
-    $laGrandeBellezza = new Movie("La grande bellezza", "The great beauty", "Paolo Sorrentino", 12.99, 2);
-       
-
 ?>
 
 <!DOCTYPE html>
@@ -32,21 +24,15 @@ i valori delle relative proprietà -->
 <body>
     <div class="main">
     <?php
-    echo('<div class="card"');
-        echo('<p>' . $ritornoAlFuturo->titolo . '</p>');
-        echo('<p>' . $ritornoAlFuturo->titoloOriginale . '</p>');
-        echo('<p>' . $ritornoAlFuturo->regista . '</p>');
-        echo('<p>' . $ritornoAlFuturo->prezzo . ' $</p>');
-        echo('<p>Prezzo scontato: ' . round($ritornoAlFuturo->calculatePrice($ritornoAlFuturo->prezzo), 2) . ' $</p>');
+    foreach ($movies as $movie) {
+        echo('<div class="card"');
+        echo('<p>' . $movie->titolo . '</p>');
+        echo('<p>' . $movie->titoloOriginale . '</p>');
+        echo('<p>' . $movie->regista . '</p>');
+        echo('<p>' . $movie->prezzo . ' $</p>');
+        echo('<p>Prezzo scontato: ' . round($movie->calculatePrice($movie->prezzo), 2) . ' $</p>');
     echo('</div>');
-
-    echo('<div class="card"');
-        echo('<p>' . $laGrandeBellezza->titolo . '</p>');
-        echo('<p>' . $laGrandeBellezza->titoloOriginale . '</p>');
-        echo('<p>' . $laGrandeBellezza->regista . '</p>');
-        echo('<p>' . $laGrandeBellezza->prezzo . ' $</p>');
-        echo('<p>Prezzo scontato: ' . round($laGrandeBellezza->calculatePrice($laGrandeBellezza->prezzo), 2) . ' $</p>');
-    echo('</div>');
+    }
     ?>
     </div>
 </body>

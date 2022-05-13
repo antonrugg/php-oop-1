@@ -1,4 +1,8 @@
 <?php
+  
+    
+
+
     class Movie {
         //attributi
         public $titolo;
@@ -26,5 +30,24 @@
         public function calculatePrice($prezzo){
             return $prezzo - ($prezzo * $this->sconto  / 100);
         }
+
+
+      
+
+
+
+        
     }
+
+      //istanza della classe Movie
+        $ritornoAlFuturo = new Movie("Ritorno al Futuro", "Back to the future", "Robert Zemeckis", 9.99, 5);
+    
+
+        //istanza della classe Movie
+        $laGrandeBellezza = new Movie("La grande bellezza", "The great beauty", "Paolo Sorrentino", 12.99, 2);
+
+        //movies array
+        $movies = [$ritornoAlFuturo, $laGrandeBellezza];
+
+   
 ?>
